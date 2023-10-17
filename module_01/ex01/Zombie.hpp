@@ -1,0 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/13 17:25:47 by dohanyan          #+#    #+#             */
+/*   Updated: 2023/09/13 20:45:49 by dohanyan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
+
+# include <iostream>
+# include <string>
+
+class Zombie
+{
+private:
+	std::string name;
+public:
+	Zombie();
+	Zombie(std::string name);
+	void announce(void);
+};
+
+Zombie* zombieHorde(int N, std::string name);
+
+#endif
