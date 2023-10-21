@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:39:00 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/07 15:29:25 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/10/21 21:57:05 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ private:
 	unsigned int _Attack_;
 public:
 	ClapTrap();
-	ClapTrap(std::string name);
+	ClapTrap(const std::string &name);
 	ClapTrap(const ClapTrap& other);
 	ClapTrap& operator= (const ClapTrap& other);
 	~ClapTrap();

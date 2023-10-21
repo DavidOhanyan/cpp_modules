@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:24:46 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/07 15:29:44 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/10/21 21:57:16 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap():_name_("NULL"),_Hit_(0),_Energy_(0),_Attack_(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name):_name_(name)
+ClapTrap::ClapTrap(const std::string &name):_name_(name)
 {
 	std::cout << "parametr constructr called" << std::endl;
 	_Hit_ = 10;

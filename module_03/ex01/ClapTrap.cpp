@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:24:46 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/07 15:29:44 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/10/21 21:47:04 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ ClapTrap::ClapTrap(std::string name):_name_(name)
 	_Energy_ = 10;
 	_Attack_ = 0;
 }
+
 
 ClapTrap::ClapTrap(const ClapTrap& other)
 {

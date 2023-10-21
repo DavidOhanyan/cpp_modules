@@ -3,7 +3,7 @@ SRCS			= main.cpp ClapTrap.cpp
 OBJ_DIR			= obj
 HEADER			= ClapTrap.hpp
 OBJS			= $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
-CC				= g++ 
+CC				= c++ 
 RM				= rm -rf
 CFLAGS			= -Wall -Wextra -Werror -std=c++98
 MK				= mkdir -p

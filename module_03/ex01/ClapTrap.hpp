@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:39:00 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/07 15:29:25 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/10/21 21:38:39 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class ClapTrap
 {
-private:
+protected:
 	std::string _name_;
 	unsigned int _Hit_;
 	unsigned int _Energy_;
@@ -27,12 +27,14 @@ public:
 	ClapTrap();
 	ClapTrap(std::string name);
 	ClapTrap(const ClapTrap& other);
-	ClapTrap& operator= (const ClapTrap& other);
 	~ClapTrap();
+public:	
+	ClapTrap& operator= (const ClapTrap& other);
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 	void show_info() const;
+	void set_name(const std::string &name);
 };
 
 #endif

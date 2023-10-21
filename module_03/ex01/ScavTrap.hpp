@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 16:49:49 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/21 21:51:58 by tumolabsstu      ###   ########.fr       */
+/*   Created: 2023/10/21 17:26:57 by tumolabsstu       #+#    #+#             */
+/*   Updated: 2023/10/21 21:59:46 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef _SCAVTRAP_HPP_
+#define _SCAVTRAP_HPP_
 
-int main()
+#include "ClapTrap.hpp"
+
+class ScavTrap:public ClapTrap
 {
-	ScavTrap obj;
-	return (0);	
-}
+public:
+    ScavTrap();
+    ScavTrap(std::string const &name);
+    ScavTrap(const ScavTrap& other);
+    ~ScavTrap();
+public:
+    ScavTrap& operator= (const ScavTrap& other);
+    void attack(const std::string& target);
+    void guardGate();
+};
+
+#endif
