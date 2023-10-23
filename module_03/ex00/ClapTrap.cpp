@@ -6,7 +6,7 @@
 /*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:24:46 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/21 21:57:16 by tumolabsstu      ###   ########.fr       */
+/*   Updated: 2023/10/22 19:14:58 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,49 @@ void ClapTrap::show_info() const
 	std::cout << "ClapTrap Has " << this->_Hit_ << " Health points" << std::endl;
 	std::cout << "ClapTrap Has " << this->_Energy_ << " Energy points" << std::endl;
 	std::cout << "ClapTrap Has " << this->_Attack_ << " damage" << std::endl;
+}
+
+void ClapTraps::set_name(std::string name)
+{
+	this->_name_ = name;
+}
+
+std::string ClapTrap::get_name() const
+{
+	return (this->name);
+}
+
+void ClapTrap::set_hit(unsigned int hit)
+{
+	this->_Hit_ = hit;
+}
+
+unsigned int ClapTrap::get_hit() const
+{
+	return (this->_Hit_);
+}
+
+void ClapTrap::set_attack(unsigned int energy)
+{
+	this->_Energy_ = energy;
+}
+
+unsigned int ClapTrap::get_energy() const
+{
+	return(this->_Energy_);
+}
+
+void ClapTrap::set_attack(unsigned int attack)
+{
+	this->_Attack_ = attack;
+}
+
+unsigned int ClapTrap::get_attack() const
+{
+	return (this->_Attack_);
+}
+
+bool ClapTrap::enough_health()
+{
+	
 }

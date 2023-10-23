@@ -6,7 +6,7 @@
 /*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 21:45:34 by tumolabsstu       #+#    #+#             */
-/*   Updated: 2023/10/21 21:54:54 by tumolabsstu      ###   ########.fr       */
+/*   Updated: 2023/10/22 18:38:32 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ ScavTrap::~ScavTrap()
 
 void ScavTrap::guardGate()
 {
-    std::cout<<" ScavTrap in Gate keeper mode."<< std::endl;
+    std::cout << "ScavTrap " << this->_name_ << " in Gate keeper mode." << std::endl;
 }

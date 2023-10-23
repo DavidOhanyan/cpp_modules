@@ -6,7 +6,7 @@
 /*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:39:00 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/21 21:38:39 by tumolabsstu      ###   ########.fr       */
+/*   Updated: 2023/10/22 18:40:14 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ public:
 	ClapTrap();
 	ClapTrap(std::string name);
 	ClapTrap(const ClapTrap& other);
-	~ClapTrap();
+	virtual ~ClapTrap();
 public:	
 	ClapTrap& operator= (const ClapTrap& other);
 	void attack(const std::string& target);

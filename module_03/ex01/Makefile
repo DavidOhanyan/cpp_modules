@@ -1,4 +1,4 @@
-NAME			= claptrap
+NAME			= scavtrap
 SRCS			= main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJ_DIR			= obj
 HEADER			= ClapTrap.hpp ScavTrap.hpp

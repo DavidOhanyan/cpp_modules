@@ -6,7 +6,7 @@
 /*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:49:49 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/21 21:51:58 by tumolabsstu      ###   ########.fr       */
+/*   Updated: 2023/10/22 18:41:17 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int main()
 {
-	ScavTrap obj;
+	ClapTrap *obj = new ScavTrap;
+	(void)obj;
+
+	delete obj;
 	return (0);	
 }
