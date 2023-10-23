@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 16:41:45 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/23 16:41:47 by dohanyan         ###   ########.fr       */
+/*   Created: 2023/10/21 17:26:57 by tumolabsstu       #+#    #+#             */
+/*   Updated: 2023/10/21 21:59:46 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

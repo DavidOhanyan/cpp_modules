@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:24:46 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/23 16:14:07 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:50:32 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ ClapTrap::ClapTrap():_name_("NULL"),_Hit_(0),_Energy_(0),_Attack_(0)
 ClapTrap::ClapTrap(const std::string &name):_name_(name)
 {
 	std::cout << "parametr constructr called" << std::endl;
-	_Hit_ = 10;
-	_Energy_ = 10;
-	_Attack_ = 0;
+	this->_Hit_ = 10;
+	this->_Energy_ = 10;
+	this->_Attack_ = 0;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
@@ -69,9 +69,9 @@ void ClapTrap::takeDamage(unsigned int amount)
 	{
 		std::cout << "ClapTrap receives " << amount << " Health" << std::endl;
 		this->_Hit_ -= amount;
+		return ;
 	}
-	else
-		std::cout << "Dead Cant Be Killed" << std::endl;
+	std::cout << this->_name_ << "has not enough health" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)

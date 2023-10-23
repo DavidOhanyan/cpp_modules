@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 16:41:37 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/23 22:08:39 by dohanyan         ###   ########.fr       */
+/*   Created: 2023/10/21 21:45:34 by tumolabsstu       #+#    #+#             */
+/*   Updated: 2023/10/23 22:09:03 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,15 @@
 
 ScavTrap::ScavTrap()
 {
-	std::cout << "Default child constructor called" << std::endl;
+	std::cout << "Default ScavTrap constructor called" << std::endl;
+}
+
+ScavTrap::ScavTrap(std::string const &name):ClapTrap(name)
+{
+	std::cout << "ScavTrap parametr constructor called"<< std::endl;
+	this->_Hit_ = 100;
+	this->_Energy_ = 50;
+	this->_Attack_ = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other)
@@ -24,14 +32,6 @@ ScavTrap::ScavTrap(const ScavTrap& other)
 	this->_Hit_ = other._Hit_;
 	this->_Energy_ = other._Energy_;
 	this->_Attack_ = other._Attack_;
-}
-
-ScavTrap::ScavTrap(std::string const &name):ClapTrap(name)
-{
-	std::cout << "ScavTrap parametr constructor called"<< std::endl;
-	this->_Hit_ = 100;
-	this->_Energy_ = 50;
-	this->_Attack_ = 20;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& other)
@@ -67,7 +67,7 @@ void ScavTrap::attack(const std::string& target)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "Destructor chhild called" << std::endl;
+	std::cout << "Destructor ScavTrap called" << std::endl;
 }
 
 void ScavTrap::guardGate()

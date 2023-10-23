@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
+/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:39:00 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/22 19:14:28 by tumolabsstu      ###   ########.fr       */
+/*   Updated: 2023/10/23 15:14:58 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ public:
 public:
 	bool enough_health();
 	bool enough_energy();
-	
 };
 
 

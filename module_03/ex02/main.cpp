@@ -6,17 +6,17 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:49:49 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/23 15:59:42 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:37:43 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
-	ClapTrap robot_1("rob-bot");
-    ClapTrap robot_2;
-	robot_1.show_info();
+    FragTrap robot_1("rob-bot");
+    FragTrap robot_3("Jack");
+    robot_1.show_info();
     robot_1.attack("tree");
     robot_1.attack("enemy");
     robot_1.attack("another enemy");
@@ -28,7 +28,8 @@ int main()
     robot_1.beRepaired(2);
     robot_1.show_info();
 
-    robot_2 = robot_1;
-    robot_2.show_info();
-   	return (0);	
+   
+    robot_3.attack("test test");
+    robot_3.highFivesGuys();
+	return (0);	
 }

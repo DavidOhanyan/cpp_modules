@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 16:49:49 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/23 15:59:42 by dohanyan         ###   ########.fr       */
+/*   Created: 2023/10/21 17:26:57 by tumolabsstu       #+#    #+#             */
+/*   Updated: 2023/10/23 18:55:59 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef _SCAVTRAP_HPP_
+#define _SCAVTRAP_HPP_
+
 #include "ClapTrap.hpp"
 
-int main()
+class ScavTrap:virtual public ClapTrap
 {
-	ClapTrap robot_1("rob-bot");
-    ClapTrap robot_2;
-	robot_1.show_info();
-    robot_1.attack("tree");
-    robot_1.attack("enemy");
-    robot_1.attack("another enemy");
-    robot_1.takeDamage(1);
-    robot_1.takeDamage(1);
-    robot_1.takeDamage(1);
-    robot_1.beRepaired(2);
-    robot_1.beRepaired(2);
-    robot_1.beRepaired(2);
-    robot_1.show_info();
+public:
+    ScavTrap();
+    ScavTrap(std::string const &name);
+    ScavTrap(const ScavTrap& other);
+    ~ScavTrap();
+public:
+    ScavTrap& operator= (const ScavTrap& other);
+    void attack(const std::string& target);
+    void guardGate();
+};
 
-    robot_2 = robot_1;
-    robot_2.show_info();
-   	return (0);	
-}
+#endif

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 16:41:37 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/23 22:08:39 by dohanyan         ###   ########.fr       */
+/*   Created: 2023/10/21 21:45:34 by tumolabsstu       #+#    #+#             */
+/*   Updated: 2023/10/23 16:54:40 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,7 @@
 
 ScavTrap::ScavTrap()
 {
-	std::cout << "Default child constructor called" << std::endl;
-}
-
-ScavTrap::ScavTrap(const ScavTrap& other)
-{
-	std::cout << "Copy ScavTrap assignment operator called" << std::endl;
-	this->_name_ = other._name_;
-	this->_Hit_ = other._Hit_;
-	this->_Energy_ = other._Energy_;
-	this->_Attack_ = other._Attack_;
+	std::cout << "Default ScavTrap constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string const &name):ClapTrap(name)
@@ -67,7 +58,7 @@ void ScavTrap::attack(const std::string& target)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "Destructor chhild called" << std::endl;
+	std::cout << "Destructor ScavTrap called" << std::endl;
 }
 
 void ScavTrap::guardGate()
