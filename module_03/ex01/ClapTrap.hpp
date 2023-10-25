@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:39:00 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/23 16:06:17 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:27:59 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ public:
 	ClapTrap();
 	ClapTrap(const std::string &name);
 	ClapTrap(const ClapTrap& other);
-	~ClapTrap();
+	virtual ~ClapTrap();
 	ClapTrap& operator= (const ClapTrap& other);
 public:
 	void attack(const std::string& target);

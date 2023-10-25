@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 21:45:34 by tumolabsstu       #+#    #+#             */
-/*   Updated: 2023/10/23 22:09:03 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:31:54 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ScavTrap::ScavTrap()
 
 ScavTrap::ScavTrap(std::string const &name):ClapTrap(name)
 {
-	std::cout << "ScavTrap parametr constructor called"<< std::endl;
+	std::cout << "parametr ScavTrap constructor called"<< std::endl;
 	this->_Hit_ = 100;
 	this->_Energy_ = 50;
 	this->_Attack_ = 20;
@@ -36,7 +36,7 @@ ScavTrap::ScavTrap(const ScavTrap& other)
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 {
-	std::cout << "Copy chhild assignment operator called" << std::endl;
+	std::cout << "Copy ScavTrap assignment operator called" << std::endl;
 	if(this == &other)
 		return(*this);
 	this->_name_ = other._name_;
@@ -48,21 +48,15 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 
 void ScavTrap::attack(const std::string& target)
 {
-     std::cout<< "chhild Attack function called" << std::endl;
-    if(this->_Hit_)
+	std::cout << "ScavTrav attack function" << std::endl;
+	if (enough_health() && enough_energy())
 	{
-		if (this->_Energy_)
-		{
-		    std::cout << "ClapTrap " <<this->_name_; 
-		    std::cout << " attacks" << target;
-			std::cout << ", causing " << this->_Attack_ << " points of damage!" << std::endl;
-			this->_Energy_--;
-			return ;
-		}
-		std::cout << "Low Energy"<<std::endl;
+		std::cout << "ScavTrap " <<this->_name_; 
+		std::cout << " attacks " << target;
+		std::cout << ", causing " << this->_Attack_ << " points of damage!" << std::endl;
+		this->_Energy_--;
 		return ;
 	}
-	std::cout << "Dead Cant Attack" << std::endl;
 }
 
 ScavTrap::~ScavTrap()

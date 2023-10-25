@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:42:06 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/23 21:15:21 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:44:29 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ FragTrap::FragTrap(const FragTrap &other)
 
 FragTrap& FragTrap::operator=(const FragTrap& other)
 {
-	std::cout << "Copy chhild FragTrap assignment operator called" << std::endl;
+	std::cout << "Copy FragTrap assignment operator called" << std::endl;
 	if(this == &other)
 		return(*this);
 	this->_name_ = other._name_;

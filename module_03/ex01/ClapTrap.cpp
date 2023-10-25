@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:24:46 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/23 16:32:37 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:45:27 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ClapTrap::ClapTrap():_name_("NULL"),_Hit_(0),_Energy_(0),_Attack_(0)
 
 ClapTrap::ClapTrap(const std::string &name):_name_(name)
 {
-	std::cout << "parametr constructr called" << std::endl;
+	std::cout << "parametr constructr called " << std::endl;
 	_Hit_ = 10;
 	_Energy_ = 10;
 	_Attack_ = 0;
