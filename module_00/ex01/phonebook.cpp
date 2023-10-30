@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 21:09:37 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/09/10 16:12:26 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:37:25 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void PhoneBook::add(int i)
 		}
 		c1[i].set_name(str);
 		break; 
-	}	
+	}
 	while(1)
 	{
 		std::cout << "input surname: ";
