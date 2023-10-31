@@ -1,7 +1,7 @@
 NAME			= animal
-SRCS			= main.cpp Animal.cpp Cat.cpp Dog.cpp
+SRCS			= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 OBJ_DIR			= obj
-HEADER			= Animal.hpp Cat.hpp Dog.hpp
+HEADER			= Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
 OBJS			= $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 CC				= c++ 
 RM				= rm -rf

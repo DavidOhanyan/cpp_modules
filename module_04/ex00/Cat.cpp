@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 19:01:31 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/30 21:41:02 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/10/31 21:02:36 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Cat::Cat()
 	this->type = "unknown";
 }
 
-Cat::Cat(const std::string &tp)
+Cat::Cat(const std::string &tp):Animal(tp)
 {
 	std::cout << "Parametr Cat Constructor" << std::endl;	
 	this->type = tp;
@@ -44,14 +44,8 @@ Cat::~Cat()
 	std::cout << "Destructor Cat" << std::endl;
 }
 
-void Cat::set_type(const std::string &type)
-{	
-	std::cout << "Set Cat Function" <<std::endl;
-	this->type = type;
+void Cat::makeSound() const
+{
+	std::cout << "Meow Meow Meow"<< std::endl;
 }
 
-std::string Cat::get_type() const
-{
-	std::cout << "Set Cat Function" <<std::endl;
-	return (this->type);
-}

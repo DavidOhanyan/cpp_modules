@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:51:46 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/30 20:15:25 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:05:51 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,18 @@ Animal::~Animal()
 	std::cout << "Destructor Animal" << std::endl;
 }
 
-void Animal::set_type(const std::string &type)
+void Animal::makeSound() const
+{
+	std::cout << "Animal makeSound function"<< std::endl;
+}
+
+void Animal::setType(const std::string &type)
 {	
 	std::cout << "Set Animal Function" <<std::endl;
 	this->type = type;
 }
 
-std::string Animal::get_type() const
+std::string Animal::getType() const
 {
 	std::cout << "Get Animal Function" <<std::endl;
 	return (this->type);
