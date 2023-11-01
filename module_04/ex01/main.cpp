@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 15:13:15 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/01 17:07:14 by dohanyan         ###   ########.fr       */
+/*   Created: 2023/10/26 16:16:17 by dohanyan          #+#    #+#             */
+/*   Updated: 2023/11/01 20:37:18 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _WRONGANIMAL_HPP_
-#define _WRONGANIMAL_HPP_
+#include "Animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
-#include <iostream>
-
-class WrongAnimal
+int main()
 {
-protected:
-	std::string type;
-public:
-	WrongAnimal();
-	WrongAnimal(const WrongAnimal &other);
-	WrongAnimal &operator = (const WrongAnimal &other);
-	virtual ~WrongAnimal();
-	void makeSound() const; 
-	void setType(const std::string &type);
-	std::string getType() const;
-};
-
-#endif
+	Animal *meta = new Animal[10];
+    // for (int i = 0; i < 5; i++)
+    //     meta[i] = new Cat();
+    // for (int i = 5; i < 10; i++)
+    //     meta[i] = new Dog();
+    meta[0] = new Dog();
+	return (0);
+}

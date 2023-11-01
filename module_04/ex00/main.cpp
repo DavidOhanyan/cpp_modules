@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 16:16:17 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/31 21:01:46 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:14:23 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int main()
     const WrongAnimal* wrongDog = new WrongCat();
     std::cout << wrongDog->getType() << " is dog type" << std::endl;
 
+    wrongDog->makeSound();
 
     wrongMeta->makeSound();
 
@@ -45,5 +46,6 @@ int main()
     delete cat;
 
     delete wrongMeta;
+    delete wrongDog;
 	return (0);
 }

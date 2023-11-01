@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 19:23:37 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/10/31 21:03:21 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/01 19:32:40 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,7 @@ WrongCat::WrongCat()
 	this->type = "unknown";
 }
 
-WrongCat::WrongCat(const std::string &tp)
-{
-	std::cout << "Parametr WrongCat Constructor" << std::endl;	
-	this->type = tp;
-}
-
-WrongCat::WrongCat(const WrongCat &other)
+WrongCat::WrongCat(const WrongCat &other): WrongAnimal(other)
 {
 	std::cout << "Copy WrongCat Constructor" << std::endl;
 	this->type = other.type;

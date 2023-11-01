@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 15:13:15 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/01 17:07:14 by dohanyan         ###   ########.fr       */
+/*   Created: 2023/10/30 19:00:50 by dohanyan          #+#    #+#             */
+/*   Updated: 2023/11/01 18:58:24 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _WRONGANIMAL_HPP_
-#define _WRONGANIMAL_HPP_
+#ifndef _CAT_HPP_
+#define _CAT_HPP_
 
-#include <iostream>
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-class WrongAnimal
+class Cat : public Animal
 {
-protected:
-	std::string type;
+private:
+	Brain *brain;
 public:
-	WrongAnimal();
-	WrongAnimal(const WrongAnimal &other);
-	WrongAnimal &operator = (const WrongAnimal &other);
-	virtual ~WrongAnimal();
-	void makeSound() const; 
-	void setType(const std::string &type);
-	std::string getType() const;
+	Cat();
+	Cat(const Cat &other);
+	Cat &operator = (const Cat &other);
+	~Cat();
+	void makeSound() const;
 };
 
 #endif

@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 21:42:11 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/01 19:32:21 by dohanyan         ###   ########.fr       */
+/*   Created: 2023/10/31 19:23:37 by dohanyan          #+#    #+#             */
+/*   Updated: 2023/11/01 19:33:34 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-Dog::Dog()
-{
-	std::cout << "Default Dog Constructor" << std::endl;
-	this->type = "Dog";
+WrongCat::WrongCat()
+{	
+	std::cout << "Default WrongCat Constructor" << std::endl;
+	this->type = "unknown";
 }
 
-Dog::Dog(const Dog &other): Animal(other)
+WrongCat::WrongCat(const WrongCat &other): WrongAnimal(other)
 {
-	std::cout << "Copy Dog Constructor" << std::endl;
+	std::cout << "Copy WrongCat Constructor" << std::endl;
 	this->type = other.type;
 }
 
-Dog &Dog::operator = (const Dog &other)
+WrongCat &WrongCat::operator = (const WrongCat &other)
 {
-	std::cout << "Operator Assignment Dog" << std::endl;
+	std::cout << "Operator Assignment WrongCat" << std::endl;
 	if (this == &other)
 		return(*this);
 	this->type = other.type;
 	return (*this);
 }
 
-Dog::~Dog()
+WrongCat::~WrongCat()	
 {
-	std::cout << "Destructor Dog" << std::endl;
+	std::cout << "Destructor WrongCat" << std::endl;
 }
 
-void Dog::makeSound() const
+void WrongCat::makeSound() const
 {
-	std::cout << "Woof Woof Woof"<< std::endl;
+	std::cout << "WrongCat makeSound function"<< std::endl;
 }
