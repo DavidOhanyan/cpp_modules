@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 21:42:09 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/04 16:01:46 by dohanyan         ###   ########.fr       */
+/*   Created: 2023/10/26 16:16:17 by dohanyan          #+#    #+#             */
+/*   Updated: 2023/11/04 16:22:24 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _DOG_HPP_
-#define _DOG_HPP_
+#include "Animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
-#include "Animal.hpp" 
-#include "Brain.hpp"
-
-class Dog : public Animal
+int main()
 {
-private:
-	Brain *brain;
-public:
-	Dog();
-	Dog(const Dog &other);
-	Dog &operator = (const Dog &other);
-	~Dog();
-	void makeSound() const;
-};
-
-#endif
+	// Animal *animalss = new Animal(); is not possible to make animalss object 
+	return (0);
+}

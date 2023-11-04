@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 21:42:09 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/04 16:01:46 by dohanyan         ###   ########.fr       */
+/*   Created: 2023/11/04 20:31:13 by dohanyan          #+#    #+#             */
+/*   Updated: 2023/11/04 22:26:39 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _DOG_HPP_
-#define _DOG_HPP_
+#include "Ice.hpp"
 
-#include "Animal.hpp" 
-#include "Brain.hpp"
-
-class Dog : public Animal
+Ice::Ice()
 {
-private:
-	Brain *brain;
-public:
-	Dog();
-	Dog(const Dog &other);
-	Dog &operator = (const Dog &other);
-	~Dog();
-	void makeSound() const;
-};
+	std::cout << "Default AMateria Constructor" << std::endl;
+}
 
-#endif
+Ice::Ice(std::string const & type):AMateria(type)
+{
+	std::cout << "Parameter AMateria Constructor" << std::endl;
+}
+
+Ice::Ice(const Ice &other):
+{
+	std::cout << "Copy Ice Constructor" << std::endl;
+	this->type = other.type;
+}
