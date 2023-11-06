@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 20:31:13 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/05 19:10:53 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/06 18:32:20 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 Ice::Ice():AMateria("Ice")
 {
-	std::cout << "Default AMateria Constructor." << std::endl;
+	std::cout << "Default Ice Constructor." << std::endl;
 }
 
 Ice::Ice(std::string const & type):AMateria(type)
 {
-	std::cout << "Parameter AMateria Constructor." << std::endl;
+	std::cout << "Parameter Ice Constructor." << std::endl;
 }
 
 Ice::Ice(const Ice &other):AMateria(other)

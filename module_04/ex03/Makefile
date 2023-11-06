@@ -1,7 +1,7 @@
 NAME			= animal
-SRCS			= main.cpp AMateria.cpp Ice.cpp
+SRCS			= main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp
 OBJ_DIR			= obj
-HEADER			= AMateria.hpp Ice.hpp
+HEADER			= AMateria.hpp Ice.hpp Cure.hpp ICharacter.hpp Character.hpp
 OBJS			= $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 CC				= c++ 
 RM				= rm -rf
