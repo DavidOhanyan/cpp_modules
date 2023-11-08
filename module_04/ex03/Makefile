@@ -5,7 +5,7 @@ HEADER			= AMateria.hpp Ice.hpp Cure.hpp ICharacter.hpp Character.hpp
 OBJS			= $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 CC				= c++ 
 RM				= rm -rf
-CFLAGS			= -Wall -Wextra -Werror -std=c++98
+CFLAGS			= -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
 MK				= mkdir -p
 
 all:			$(OBJ_DIR) $(NAME)
