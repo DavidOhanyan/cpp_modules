@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:11:14 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/05 18:37:09 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:01:30 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ public:
 	Ice &operator = (const Ice &other);
 	~Ice();
 	AMateria* clone() const;
-	// void use(ICharacter& target);
+	void use(ICharacter& target);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:27:51 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/06 18:28:17 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/09 22:03:33 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,9 @@ Cure::~Cure()
 AMateria* Cure::clone() const
 {
 	return (new Cure(*this));
+}
+
+void Cure::use(ICharacter& target)
+{
+	std::cout << "* heals "<< target.getName() << "’s wounds *"<<std::endl;
 }

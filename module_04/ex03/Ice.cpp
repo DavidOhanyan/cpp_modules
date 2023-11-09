@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 20:31:13 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/06 18:32:20 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:02:17 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,9 @@ Ice::~Ice()
 AMateria* Ice::clone() const
 {
 	return (new Ice(*this));
+}
+
+void Ice::use(ICharacter& target)
+{
+	std::cout << "* shoots an ice bolt at "<< target.getName() << " *"<<std::endl;
 }

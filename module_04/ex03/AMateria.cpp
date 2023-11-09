@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:53:31 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/05 17:59:43 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:57:50 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,9 @@ std::string const& AMateria::getType() const
 {
 	std::cout << "GetType AMateria Function." << std::endl;
 	return (this->type);
+}
+
+void AMateria::use(ICharacter& target)
+{
+	std::cout << "I'm a Simple Materia" << target.getName() << std::endl;
 }
