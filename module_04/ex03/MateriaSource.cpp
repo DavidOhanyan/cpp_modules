@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:48:11 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/09 21:59:18 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:37:25 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,18 @@ MateriaSource::~MateriaSource()
 void MateriaSource::learnMateria(AMateria* materia)
 {
 	for (int i = 0; i < 4; i++)
-	if (!(this->slots[i]) && materia)
 	{
-		this->slots[i] = materia;
-		std::cout << "MateriaSource learned." << std::endl;
-		return ;
+		if(this->slots[i] == materia)
+			return;
+		if (!this->slots[i])
+		{
+			this->slots[i] = materia;
+			std::cout << "MateriaSource learned." << std::endl;
+			return ;
+		}
 	}
 	std::cout << "MateriaSource can't learn." << std::endl;
+	
 }
 
 AMateria* MateriaSource::createMateria (std::string const & type)

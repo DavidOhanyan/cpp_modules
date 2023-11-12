@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:20:18 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/09 20:20:50 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:39:06 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,18 @@ std::string const &Character::getName() const
 void Character::equip(AMateria* m)
 {
 	if (m)
-	for (int i = 0; i < 4; i++)
 	{
-		if (!this->slots[i])
+		 for (int i = 0; i < 4; i++) 
+        	if (this->slots[i] == m)
+            	return ;
+		for (int i = 0; i < 4; i++)
 		{
-			this->slots[i] = m;
-			return ;
-		}	
+			if (!this->slots[i])
+			{
+				this->slots[i] = m;
+				return ;
+			}	
+		}
 	}
 	std::cout << "Einventory Is Full." << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:45:49 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/06 22:12:28 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:24:32 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define _ICHARACTER_HPP_
 
 #include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {
