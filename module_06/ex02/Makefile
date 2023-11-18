@@ -1,11 +1,11 @@
-NAME			= static_cast
-SRCS			= main.cpp ScalarConverter.cpp validator.cpp
+NAME			= dinamic_cast
+SRCS			= main.cpp Base.cpp
 OBJ_DIR			= obj
-HEADER			= ScalarConverter.hpp validator.hpp
+HEADER			= Base.hpp A.hpp B.hpp C.hpp
 OBJS			= $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 CC				= c++ 
 RM				= rm -rf
-CFLAGS			= -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
+#CFLAGS			= #-Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
 MK				= mkdir -p
 
 all:			$(OBJ_DIR) $(NAME)
