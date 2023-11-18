@@ -52,15 +52,14 @@ bool correct_input(std::string input, size_t input_size)
 void validator(int argc, char **argv)
 {
     if (argc != 2)
-        throw std::runtime_error("1bad argument!");
+        throw std::runtime_error("more or less argument!\n");
 
     std::string input = argv[1];
     size_t input_size = input.length();
 
     if (!input_size)
-         throw std::runtime_error("2bad argument!");
+         throw std::runtime_error("bad argument!\n");
     
     if (!correct_input(input, input_size))
-        throw std::runtime_error("3bad argument! validic");
-
+        throw std::runtime_error("input valid argument!\n");
 }
