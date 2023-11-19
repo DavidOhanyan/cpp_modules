@@ -34,20 +34,19 @@ Base *generate()
     // return (new A());
 }
 
-// void identify(Base* p)
-// {
-//     A *a1 = dynamic_cast<A*>(p);
-//     B *a2 = dynamic_cast<B*>(p);
-//     C *a3 = dynamic_cast<C*>(p);
+void identify(Base* p)
+{
+    A *a1 = dynamic_cast<A*>(p);
+    B *a2 = dynamic_cast<B*>(p);
+    C *a3 = dynamic_cast<C*>(p);
 
-//     if(a1)
-//         std::cout << "A" << std::endl;
-//     if(a2)
-//         std::cout << "B" << std::endl;
-//     if(a3)
-//         std::cout << "C" << std::endl;
-//     delete p;
-// }
+    if(a1)
+        std::cout << "A" << std::endl;
+    if(a2)
+        std::cout << "B" << std::endl;
+    if(a3)
+        std::cout << "C" << std::endl;
+}
 
 void identify(Base& p)
 { 
@@ -58,9 +57,7 @@ void identify(Base& p)
         std::cout << "A" << std::endl;
     }
     catch(...)
-    {
-        // std::cout<<"dsad\n";
-    }
+    {}
     try
     {
         B b1;
@@ -68,9 +65,7 @@ void identify(Base& p)
         std::cout << "B" << std::endl;
     }
     catch(...)
-    {
-        // std::cout<<"dsad\n";
-    }
+    {}
     try
     {
         C c1;
@@ -78,8 +73,5 @@ void identify(Base& p)
         std::cout << "C" << std::endl;
     }
     catch(...)
-    {
-        // std::cout<<"dsad\n";
-    }
-
+    {}
 }

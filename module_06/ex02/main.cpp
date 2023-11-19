@@ -11,65 +11,38 @@
 /* ************************************************************************** */
 
 #include "Base.hpp"
-
-class Glxavor
-{
-public:
-    virtual ~Glxavor(){}
-
-};
-
-class Axjik:public Glxavor
-{};
-
-class Txa:public Glxavor
-{};
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
 int main()
 {
-    Base &b1 = *generate();
-    identify(b1);
-    // Txa t1,t2;
-    // Axjik a1;
+    Base* someRandomPtr = generate();
 
-    // Glxavor& g1 = a1;
-    // t1 = dynamic_cast<Txa&>(g1);
-    
-    // Glxavor* g1 = new Axjik();
-    // Txa *t1;
-    // Axjik *a1;
-
-    // t1 = dynamic_cast<Txa*>(g1);
-    // if(t1)
-    //     std::cout<<"toshnia\n";
-    // else
-    //     std::cout<<"voria\n";
-    // try
-    // {
-    // Axjik a1;
-    // Axjik a2;
-    // Txa t1;
-
-    // Glxavor& g1 = a1;
-    // t1 = dynamic_cast<Axjik&>(g1);
-    // }
-    // catch(const std::exception& ex)
-    // {
-    //     std::cout<<ex.what()<<std::endl;
-    // }
-    // txa t1;
-
-    // axjik *ax = dynamic_cast<axjik*>(t);
-    // if (ax)
-    //     std::cout<<"tosnia\n";
-    // else
-    //     std::cout<<"voria\n";
-
-    // delete t;
-    // txa*p = new axjik();
-    // Base *b1 = generate();
-    // identify(b1);
-    // Base &b1 = *generate();
-    // identify(b1);
+    std::cout << "----------Random---------" << std::endl;
+    identify(someRandomPtr);
+    identify(*someRandomPtr);
+    delete someRandomPtr;
+    {
+        Base* a = new A();
+        std::cout << "------------A------------" << std::endl;
+        identify(a);
+        identify(*a);
+        delete a;
+    }
+    {
+        Base* b = new B();
+        std::cout << "------------B------------" << std::endl;
+        identify(b);
+        identify(*b);
+        delete b;
+    }
+    {
+        Base* c = new C();
+        std::cout << "------------C------------" << std::endl;
+        identify(c);
+        identify(*c);
+        delete c;
+    }
     return (0);
 }
