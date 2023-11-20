@@ -1,7 +1,7 @@
-NAME			= dinamic_cast
-SRCS			= main.cpp Base.cpp
+NAME			= arr
+SRCS			= main.cpp
 OBJ_DIR			= obj
-HEADER			= Base.hpp A.hpp B.hpp C.hpp
+HEADER			= Array.hpp
 OBJS			= $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 CC				= c++ 
 RM				= rm -rf
