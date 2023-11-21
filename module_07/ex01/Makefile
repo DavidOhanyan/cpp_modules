@@ -1,7 +1,7 @@
-NAME			= whatever
+NAME			= iter
 SRCS			= main.cpp
 OBJ_DIR			= obj
-HEADER			= whatever.hpp
+HEADER			= iter.hpp
 OBJS			= $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 CC				= c++ 
 RM				= rm -rf
