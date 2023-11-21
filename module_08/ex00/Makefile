@@ -1,7 +1,7 @@
-NAME			= whatever
+NAME			= find
 SRCS			= main.cpp
 OBJ_DIR			= obj
-HEADER			= whatever.hpp
+HEADER			= easyfind.hpp
 OBJS			= $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 CC				= c++ 
 RM				= rm -rf
