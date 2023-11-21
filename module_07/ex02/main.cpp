@@ -5,44 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 18:06:25 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/21 13:09:05 by dohanyan         ###   ########.fr       */
+/*   Created: 2023/11/20 17:34:58 by dohanyan          #+#    #+#             */
+/*   Updated: 2023/11/21 13:11:46 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
+#include "Array.hpp"
 
-template<typename T>
-void template_func(T& param1)
+int main( void ) 
 {
-    param1 += "_Yerevan";
-}
+     Array<int> numbers(5);
+    unsigned int size = numbers.size();
 
-void ordinary_func(int &a)
-{
-    a *= a;
-}
-
-int main()
-{
-    int a[] = {1, 2, 3, 4, 5};
-    std::string b[] = {"42", "42", "42", "42", "42"};
-
-    iter(a, 5, ordinary_func);
-    iter(b, 5, template_func);
-    
-    for (size_t i = 0; i < 5; i++)
+    for (unsigned int i = 0; i < size; i++)
     {
-        std::cout << a[i] << " ";
+        numbers[i] = (i + (i * 2)) / 2;
+        std::cout << "array[" << i << "] = " << numbers[i] << std::endl;
     }
 
-    std::cout << std::endl;
-    for (size_t i = 0; i < 5; i++)
-    {
-        std::cout << b[i] << " ";
-    }
+    Array<int> otherNumbers = numbers;
 
-    std::cout << std::endl;
-    
-    return (0);
+    std::cout << "copy --------" << std::endl;
+    for (unsigned int i = 0; i < size; i++)
+    {
+        std::cout << "array[" << i << "] = " << otherNumbers[i] << std::endl;
+    }
+    return 0;
 }
