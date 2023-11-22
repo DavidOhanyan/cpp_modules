@@ -18,7 +18,8 @@
 #include <string>
 #include <climits>
 #include <cstdlib>
-// #include <cmath>
+#include <sstream>
+#include <cmath>
 
 enum literals {CHAR, INT, FLOAT, DOUBLE, NAN, INF};
 

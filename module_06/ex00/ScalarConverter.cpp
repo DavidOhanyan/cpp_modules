@@ -104,8 +104,11 @@ void ScalarConverter::print_int(int val)
 
 void ScalarConverter::print_float(float val, const std::string& input)
 {
-    size_t ch = input.find('.');
-    if (ch == std::string::npos || (ch != std::string::npos && input[ch + 1] == '0'))
+    (void)input;
+    std::ostringstream strs;
+    strs << val;
+    std::string input2 = strs.str();
+    if(input2.find('.') == std::string::npos && !std::isinf(val))
         std::cout << "float: " << val << ".0f" << std::endl;
     else
         std::cout << "float: " << val << "f" << std::endl;
@@ -113,10 +116,15 @@ void ScalarConverter::print_float(float val, const std::string& input)
 
 void ScalarConverter::print_double(double val, const std::string& input)
 {
-    if (input.find('.') != std::string::npos)
-        std::cout << "double: " << val  << std::endl;
-    else
+    (void)input;
+    std::ostringstream strs;
+    strs << val;
+    std::string input2 = strs.str();
+    // if (input.find('.') != std::string::npos)
+    if(input2.find('.') == std::string::npos)
         std::cout << "double: " << val << ".0" << std::endl;
+    else
+        std::cout << "double: " << val  << std::endl;
 }
 
 int ScalarConverter::finde_type(const std::string input)
