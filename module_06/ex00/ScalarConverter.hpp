@@ -16,36 +16,40 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <cctype>
 #include <climits>
 #include <cstdlib>
 #include <sstream>
 #include <cmath>
 
-enum literals {CHAR, INT, FLOAT, DOUBLE, NAN, INF};
+enum literals {CHAR, INT, FLOAT, DOUBLE, NANS, INF};
 
 class ScalarConverter
 {
-public:
+private:
     ScalarConverter();
     ScalarConverter(const ScalarConverter&);
     ScalarConverter& operator= (const ScalarConverter&);
     ~ScalarConverter();
 
-    static void convert(const std::string& input);
 
     static void cast_char(const std::string& input);
     static void cast_int(const std::string& input);
     static void cast_float(const std::string& input);
-    static void cast_double(const std::string& input)
-    ;
+    static void cast_double(const std::string& input);
     static void print_inf(const std::string& input);
     static void print_nan();
     static void print_char(char ch);
     static void print_int(int val);
-    static void print_float(float val, const std::string& input);
-    static void print_double(double val, const std::string& input);
+    static void print_float(float val);
+    static void print_double(double val);
 
-    static int finde_type(const std::string input);
+    static int finde_type(const std::string& input);
+    static bool DOES;
+
+public:
+    static void convert(const std::string& input);
+
 };
 
 #endif
