@@ -23,7 +23,7 @@ ScalarConverter::~ScalarConverter(){}
 void ScalarConverter::convert(const std::string& input)
 {
     int type = finde_type(input);
-    if (type == INF)
+    if (type == INF) 
         ScalarConverter::print_inf(input);
     if (type == NAN)
         ScalarConverter::print_nan();
