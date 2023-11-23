@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:07:13 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/20 18:16:56 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:39:50 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,20 @@
 
 #include <iostream>
 
+template <typename T>
+void printValue(const T& value) {
+    std::cout << value << " ";
+}
+
+// template<typename T, typename Func>
+// void iter(T *t1, size_t len, Func func)
+// {
+//     for (size_t i = 0; i < len; i++)
+//         func(t1[i]);
+// }
+
 template<typename T>
-void iter(T *t1, size_t len, void(*func)(T&))
+void iter(T *t1, size_t len, void(*func)(const T&))
 {
     for (size_t i = 0; i < len; i++)
         func(t1[i]);

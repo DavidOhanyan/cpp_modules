@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:06:25 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/21 13:09:05 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:45:14 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,28 @@ void ordinary_func(int &a)
     a *= a;
 }
 
-int main()
-{
-    int a[] = {1, 2, 3, 4, 5};
-    std::string b[] = {"42", "42", "42", "42", "42"};
+int main() {
+    int intArray[] = {1, 2, 3, 4, 5};
+    size_t intArrayLength = sizeof(intArray) / sizeof(intArray[0]);
 
-    iter(a, 5, ordinary_func);
-    iter(b, 5, template_func);
-    
-    for (size_t i = 0; i < 5; i++)
-    {
-        std::cout << a[i] << " ";
-    }
-
+    std::cout << "Iterating through intArray: ";
+    iter(intArray, intArrayLength, printValue<const int>);
     std::cout << std::endl;
-    for (size_t i = 0; i < 5; i++)
-    {
-        std::cout << b[i] << " ";
-    }
 
+    const double doubleArray[] = {1.1, 2.2, 3.3, 4.4, 5.5};
+    const size_t doubleArrayLength = sizeof(doubleArray) / sizeof(doubleArray[0]);
+
+    std::cout << "Iterating through doubleArray: ";
+    iter(doubleArray, doubleArrayLength, printValue<double>);
     std::cout << std::endl;
-    
-    return (0);
+
+    std::string stringArray[] = {"a", "b", "c", "d", "e"};
+    size_t stringArrayLength = sizeof(stringArray) / sizeof(stringArray[0]);
+
+    std::cout << "Iterating through stringArray: ";
+    iter(stringArray, stringArrayLength, printValue<std::string>);
+    std::cout << std::endl;
+
+
+  return 0;
 }
