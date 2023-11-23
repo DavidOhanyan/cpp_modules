@@ -26,7 +26,7 @@ void ScalarConverter::convert(const std::string& input)
 {
     int type = finde_type(input);
     int num = std::atoi(input.c_str());
-    if (std::isdigit(input[0]) && (!std::isprint(num) || !isascii(num)))
+    if ((!isascii(num) || !std::isprint(num)) && type != CHAR)
         ScalarConverter::DOES = false;
     if (type == INF)
         ScalarConverter::print_inf(input);
