@@ -6,7 +6,7 @@
 /*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:07:13 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/23 17:39:50 by tumolabsstu      ###   ########.fr       */
+/*   Updated: 2023/11/24 17:15:24 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ void printValue(const T& value) {
 
 template<typename T>
 void iter(T *t1, size_t len, void(*func)(const T&))
+{
+    for (size_t i = 0; i < len; i++)
+        func(t1[i]);
+}
+
+template<typename T>
+void iter(const T *t1, size_t len, void(*func)(const T&))
 {
     for (size_t i = 0; i < len; i++)
         func(t1[i]);

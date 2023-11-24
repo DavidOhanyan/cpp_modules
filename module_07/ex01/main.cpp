@@ -6,22 +6,11 @@
 /*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:06:25 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/23 17:45:14 by tumolabsstu      ###   ########.fr       */
+/*   Updated: 2023/11/24 17:15:02 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
-
-template<typename T>
-void template_func(T& param1)
-{
-    param1 += "_Yerevan";
-}
-
-void ordinary_func(int &a)
-{
-    a *= a;
-}
 
 int main() {
     int intArray[] = {1, 2, 3, 4, 5};

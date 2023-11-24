@@ -66,6 +66,12 @@ public:
             throw std::out_of_range("index is out of range!");
         return (this->array[index]);
     }
+    const T& operator[](size_t index) const
+    {
+        if (index >= this->size())
+            throw std::out_of_range("index is out of range!");
+        return (this->array[index]);
+    }
     size_t size() const
     {
         return (this->len);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:34:58 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/21 13:11:46 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/24 17:25:33 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ int main( void )
     {
         std::cout << "array[" << i << "] = " << otherNumbers[i] << std::endl;
     }
+
+    // const Array<int> arr(MAX_VAL);
+    // std::cout << "array[5] = " << arr[5] << std::endl;
     return 0;
 }
