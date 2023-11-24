@@ -6,13 +6,14 @@
 /*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:06:25 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/11/24 17:15:02 by tumolabsstu      ###   ########.fr       */
+/*   Updated: 2023/11/24 21:26:39 by tumolabsstu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
 
-int main() {
+int main() 
+{
     int intArray[] = {1, 2, 3, 4, 5};
     size_t intArrayLength = sizeof(intArray) / sizeof(intArray[0]);
 
