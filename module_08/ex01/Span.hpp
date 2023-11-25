@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:31:51 by tumolabsstu       #+#    #+#             */
-/*   Updated: 2023/11/25 21:50:49 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/11/26 01:55:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ public:
 
     int shortestSpan();
     int longestSpan();
-
+    
+    void fill(unsigned int size);
 };
 
 #endif
