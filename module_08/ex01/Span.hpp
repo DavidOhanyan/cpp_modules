@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tumolabsstudent <tumolabsstudent@studen    +#+  +:+       +#+        */
+/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:31:51 by tumolabsstu       #+#    #+#             */
-/*   Updated: 2023/11/24 17:32:47 by tumolabsstu      ###   ########.fr       */
+/*   Updated: 2023/11/25 21:50:49 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,25 @@
 #define _SPAN_HPP_
 
 #include <iostream>
+#include <list>
+#include <algorithm>
+
+class Span
+{
+private:
+    unsigned int N;
+    std::list<int> lst;
+public:
+    Span();
+    Span(unsigned int sz);
+    Span(const Span& other);
+    Span& operator=(const Span& other);
+    ~Span();
+    void addNumber(const int num);
+
+    int shortestSpan();
+    int longestSpan();
+
+};
 
 #endif

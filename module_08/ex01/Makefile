@@ -1,11 +1,11 @@
-NAME			= whatever
-SRCS			= main.cpp
+NAME			= span
+SRCS			= main.cpp Span.cpp
 OBJ_DIR			= obj
-HEADER			= whatever.hpp
+HEADER			= Span.hpp
 OBJS			= $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 CC				= c++ 
 RM				= rm -rf
-CFLAGS			= -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
 MK				= mkdir -p
 
 all:			$(OBJ_DIR) $(NAME)
