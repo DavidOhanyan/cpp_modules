@@ -1,4 +1,4 @@
-NAME			= iter
+NAME			= mutantStack
 SRCS			= main.cpp
 OBJ_DIR			= obj
 HEADER			= MutantStack.hpp
