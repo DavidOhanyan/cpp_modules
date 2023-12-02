@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:51:21 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/02 21:37:33 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/12/03 01:14:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,101 +184,69 @@ public:
 	// {
 	// 	BitcoinExchange::validateFile("example.txt");
 	// }
-	static void validKeyValue()
+	static bool validKeyValue(bool call)
 	{
 		if (BitcoinExchange::key.size() == 10 && BitcoinExchange::countOccurrences(BitcoinExchange::key, '-') == 2)
 		{
 			BitcoinExchange::splitString(BitcoinExchange::key, '-');
 			if (!BitcoinExchange::validateKey())
-				throw std::runtime_error("not valid!");
-			BitcoinExchange::validateValue();
+				return (false);
+			if	(call)
+				BitcoinExchange::validateValue();
 		}
 		else
-			throw std::runtime_error("not valid2!");
+			return (false);
+		return (true);
 		//std::cout<<result->size();
 	}
-	static void openFile(std::string fname)
+	static bool openFile(std::ifstream& file)
 	{
-		std::ifstream file(fname.c_str());
-    	if (!file.is_open())
-            throw std::runtime_error("Unable to open file\n");
 		std::string line;
 		size_t comma;
-		std::getline(file, line);
-		if (line != "date,exchange_rate")
-			 throw std::runtime_error("Wrong db name\n");
 		while (std::getline(file, line))
 		{
 			if ((comma = line.find(',')) == std::string::npos)
-				throw std::runtime_error("Bad data1\n");
+				return (false);
 			BitcoinExchange::key = line.substr(0, comma);
 			BitcoinExchange::value = line.substr(comma + 1, line.size());
-			BitcoinExchange::validKeyValue();
+			if (!BitcoinExchange::validKeyValue(true))
+				return (false);
 		}
-		//BitcoinExchange::validateVector();
-		//BitcoinExchange::vec.clear();
-		//BitcoinExchange::splited.clear();
-			for (std::map<std::string, double>::iterator it = BitcoinExchange::map.begin(); it != map.end(); ++it) {
-         std::cout << "Key: " << it->first << " Value: " << it->second << std::endl;
-    	 }
+		return (true);
 	}
-	//static bool validateIntputValue(std::string& str, int i)
-	//{
-	//	if (!BitcoinExchange::is_all_num(str))
-	//	{
-	//		std::cout << "Error: bad input => " << BitcoinExchange::vec[i - 1] << " | " << BitcoinExchange::vec[i]<<std::endl;
-	//		return (false);
-	//	}
-	//	if (str.size() > 4 || std::atoi(str.c_str()) > 1000)
-	//	{
-	//		std::cout<< "Error: too large a number."<<std::endl;
-	//		return (false);
-	//	}
+	static void dbFile(std::string fname)
+	{
+		std::ifstream file(fname.c_str());
+		std::string line;
+    	if (!file.is_open())
+            throw std::runtime_error("Unable to open file\n");
+		std::getline(file, line);
+		if (line != "date,exchange_rate")
+			 throw std::runtime_error("Wrong db name\n");
+		if (!BitcoinExchange::openFile(file) || BitcoinExchange::map.empty())
+			throw std::runtime_error("txura\n");
 		
-	//	if (str.size() > 10 || std::atol(str.c_str()) < 0)
-	//	{
-	//		std::cout << "Error: not a positive number."<< std::endl;
-	//		return (false);
-	//	}
-	//	return (true);
-	//}
-	//static void validateInputDate()
-	//{
-	//	std::string key;
-	//	for (size_t i = 0; i < BitcoinExchange::vec.size(); i++)
-	//	{
-	//		if (i % 2 == 0)
-	//		{
-	//			key = BitcoinExchange::vec[i];
-	//			BitcoinExchange::splited = BitcoinExchange::splitString(key, '-');
-	//			if (!BitcoinExchange::validateKey() || BitcoinExchange::vec[i].size() != 10 || BitcoinExchange::vec[i+1].empty())
-	//			{
-	//					std::cout << "Error: bad input => "<<BitcoinExchange::vec[i]
-	//					<<" | "<<BitcoinExchange::vec[i + 1]<<std::endl;	
-	//					continue;
-	//			}
-	//			if(!BitcoinExchange::validateIntputValue(BitcoinExchange::vec[i+1], i+1))
-	//				continue;
-
-	//			std::map<std::string, double>::iterator it;
-	//			it = BitcoinExchange::map.find(BitcoinExchange::vec[i]);
-	//			if (it != BitcoinExchange::map.end())
-	//			{
-	//				std::cout<<BitcoinExchange::vec[i]<<" => "<< BitcoinExchange::vec[i + 1]<<" = "
-	//				<<it->second * std::strtod(BitcoinExchange::vec[i + 1].c_str(), NULL) <<std::endl;
-	//			}
-	//			else
-	//			{
-	//				it = BitcoinExchange::map.upper_bound(BitcoinExchange::vec[i]);
-	//				it--;
-	//				std::cout<<BitcoinExchange::vec[i]<<" => "<< BitcoinExchange::vec[i + 1]<<" = "
-	//				<<it->second * std::strtod(BitcoinExchange::vec[i + 1].c_str(), NULL) <<std::endl;
-	//			}
-	//		}
-		
-	
-	//	}
-	//}
+		// for (std::map<std::string, double>::iterator it = BitcoinExchange::map.begin(); it != map.end(); ++it) {
+        //  std::cout << "Key: " << it->first << " Value: " << it->second << std::endl;
+    	//  }
+	}
+	static void infile(std::string fname)
+	{
+		std::ifstream file(fname.c_str());
+		std::string line;
+		std::map<std::string, double>::iterator it;
+		it = BitcoinExchange::map.begin();
+    	if (!file.is_open())
+            throw std::runtime_error("Unable to open file\n");
+		std::getline(file, line);
+		if (line != "date | value")
+			 throw std::runtime_error("Wrong in name\n");
+		// while (std::getline(file, line))
+		// {
+		// 	if (line.find('|') == std::string::npos)
+		// 		std::cout <<"Error: bad input => " << line <<std::endl;
+		// }
+	}
 	//static void validateInputFile(std::string fname)
 	//{
 	//	std::ifstream file(fname.c_str());
