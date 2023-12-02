@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:51:21 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/01 20:30:27 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/02 21:37:33 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ private:
 	static std::vector<std::string> vec;
 	static std::vector<std::string> splited;
 	static std::map<std::string, double> map;
+	static std::string key;
+	static std::string value;
+	static std::string result[3];
 private:
 	BitcoinExchange(){}
 	BitcoinExchange(const BitcoinExchange& ){}
@@ -45,24 +48,14 @@ public:
     	}
     	return (count);
 	}
-	static std::vector<std::string> splitString(const std::string& input, char delimiter) 
+	static void splitString(const std::string& input, char delimiter)
 	{
-    	std::vector<std::string> result;
+    	std::stringstream ss(input);
     	std::string token;
-    	for (size_t i = 0; i < input.length(); ++i)
-		{
-        	char ch = input[i];
-        	if (ch != delimiter)
-            	token += ch;
-        	else 
-			{
-            	result.push_back(token);
-            	token.clear();
-        	}
-   		}
-    	if (!token.empty())
-        	result.push_back(token);
-    	return (result);
+		int i = 0;
+    
+    	while (std::getline(ss, token, delimiter)) 
+			result[i++] = token;
 	}
 	static void removeSpaceTab(std::string& str)
 	{
@@ -90,7 +83,7 @@ public:
 	{
     	bool dotFound = false;
 		size_t i = 0;
-		if (str[i] == '-' || str[i] == '+')
+		if (str[i] == '-')
 			i++;
     	for (; i < str.length(); ++i) 
 		{
@@ -109,28 +102,26 @@ public:
 	{
     	return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 	}
-	static void validateValue(std::string &line, std::string key)
+	static void validateValue()
 	{
-		double value;
-		if (!BitcoinExchange::is_all_num(line))
+		double res;
+		if (!BitcoinExchange::is_all_num(value))
 			throw std::runtime_error("vata\n");
-		value = std::strtod(line.c_str(), NULL);
-		if (value < 0 || value > 100000)
+		res = std::strtod(value.c_str(), NULL);
+		if (res < 0 || res > 100000)
 			throw std::runtime_error("big size\n");
-		BitcoinExchange::map[key] = value;
+		BitcoinExchange::map[key] = res;
 	}
 	static bool validateKey()
 	{
-		if (BitcoinExchange::splited.size() != 3)
-			return (false);
-		if (!BitcoinExchange::is_all_num(BitcoinExchange::splited[0]) || 
-			!BitcoinExchange::is_all_num(BitcoinExchange::splited[1]) || 
-			!BitcoinExchange::is_all_num(BitcoinExchange::splited[2]))
+		if (!BitcoinExchange::is_all_num(BitcoinExchange::result[0]) || 
+			!BitcoinExchange::is_all_num(BitcoinExchange::result[1]) || 
+			!BitcoinExchange::is_all_num(BitcoinExchange::result[2]))
 			return (false);
 		int Manth_Day[] = {-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-		int Year = std::atoi(BitcoinExchange::splited[0].c_str());
-		int Manth = std::atoi(BitcoinExchange::splited[1].c_str());
-		int Day = std::atoi(BitcoinExchange::splited[2].c_str());
+		int Year = std::atoi(BitcoinExchange::result[0].c_str());
+		int Manth = std::atoi(BitcoinExchange::result[1].c_str());
+		int Day = std::atoi(BitcoinExchange::result[2].c_str());
 		
 		if (Year < 2009 || Year > 2024)
 			return (false);
@@ -144,23 +135,23 @@ public:
 		  	return (false);
 		return (true);
 	}
-	static void validateVector()
-	{
-		std::string key;
-		for (size_t i = 0; i < vec.size(); i++)
-		{
-			if (i % 2 == 0)
-			{
-				key = BitcoinExchange::vec[i];
-				BitcoinExchange::splited = BitcoinExchange::splitString(key, '-');
-				if (!BitcoinExchange::validateKey() || BitcoinExchange::vec[i].size() != 10)
-					throw std::runtime_error("shat vata\n");	
-			}
-			else
-				BitcoinExchange::validateValue(BitcoinExchange::vec[i], key);
-		}
+	//static void validateVector()
+	//{
+	//	std::string key;
+	//	for (size_t i = 0; i < vec.size(); i++)
+	//	{
+	//		if (i % 2 == 0)
+	//		{
+	//			key = BitcoinExchange::vec[i];
+	//			BitcoinExchange::splited = BitcoinExchange::splitString(key, '-');
+	//			if (!BitcoinExchange::validateKey() || BitcoinExchange::vec[i].size() != 10)
+	//				throw std::runtime_error("shat vata\n");	
+	//		}
+	//		else
+	//			BitcoinExchange::validateValue(BitcoinExchange::vec[i], key);
+	//	}
 		
-	}
+	//}
 	// static void validateFile(std::string fName)
 	// {
 	// 	std::ifstream file(fName.c_str());
@@ -193,7 +184,20 @@ public:
 	// {
 	// 	BitcoinExchange::validateFile("example.txt");
 	// }
-	static void validateDb(std::string fname)
+	static void validKeyValue()
+	{
+		if (BitcoinExchange::key.size() == 10 && BitcoinExchange::countOccurrences(BitcoinExchange::key, '-') == 2)
+		{
+			BitcoinExchange::splitString(BitcoinExchange::key, '-');
+			if (!BitcoinExchange::validateKey())
+				throw std::runtime_error("not valid!");
+			BitcoinExchange::validateValue();
+		}
+		else
+			throw std::runtime_error("not valid2!");
+		//std::cout<<result->size();
+	}
+	static void openFile(std::string fname)
 	{
 		std::ifstream file(fname.c_str());
     	if (!file.is_open())
@@ -207,102 +211,103 @@ public:
 		{
 			if ((comma = line.find(',')) == std::string::npos)
 				throw std::runtime_error("Bad data1\n");
-			BitcoinExchange::vec.push_back(line.substr(0, comma));
-			if ((line.substr(comma + 1, line.size())).empty())
-				throw std::runtime_error("Bad data2\n");
-			BitcoinExchange::vec.push_back(line.substr(comma + 1, line.size()));
+			BitcoinExchange::key = line.substr(0, comma);
+			BitcoinExchange::value = line.substr(comma + 1, line.size());
+			BitcoinExchange::validKeyValue();
 		}
-		BitcoinExchange::validateVector();
-		BitcoinExchange::vec.clear();
-		BitcoinExchange::splited.clear();
-		//     for (std::map<std::string, double>::iterator it = BitcoinExchange::map.begin(); it != map.end(); ++it) {
-        // std::cout << "Key: " << it->first << " Value: " << it->second << std::endl;
-    	// }
+		//BitcoinExchange::validateVector();
+		//BitcoinExchange::vec.clear();
+		//BitcoinExchange::splited.clear();
+			for (std::map<std::string, double>::iterator it = BitcoinExchange::map.begin(); it != map.end(); ++it) {
+         std::cout << "Key: " << it->first << " Value: " << it->second << std::endl;
+    	 }
 	}
-	static bool validateIntputValue(std::string& str, int i)
-	{
-		if (!BitcoinExchange::is_all_num(str))
-		{
-			std::cout << "Error: bad input => " << BitcoinExchange::vec[i - 1] << " | " << BitcoinExchange::vec[i]<<std::endl;
-			return (false);
-		}
-		if (str.size() > 4 || std::atoi(str.c_str()) > 1000)
-		{
-			std::cout<< "Error: too large a number."<<std::endl;
-			return (false);
-		}
+	//static bool validateIntputValue(std::string& str, int i)
+	//{
+	//	if (!BitcoinExchange::is_all_num(str))
+	//	{
+	//		std::cout << "Error: bad input => " << BitcoinExchange::vec[i - 1] << " | " << BitcoinExchange::vec[i]<<std::endl;
+	//		return (false);
+	//	}
+	//	if (str.size() > 4 || std::atoi(str.c_str()) > 1000)
+	//	{
+	//		std::cout<< "Error: too large a number."<<std::endl;
+	//		return (false);
+	//	}
 		
-		if (str.size() > 10 || std::atol(str.c_str()) < 0)
-		{
-			std::cout << "Error: not a positive number."<< std::endl;
-			return (false);
-		}
-		return (true);
-	}
-	static void validateInputDate()
-	{
-		std::string key;
-		for (size_t i = 0; i < BitcoinExchange::vec.size(); i++)
-		{
-			if (i % 2 == 0)
-			{
-				key = BitcoinExchange::vec[i];
-				BitcoinExchange::splited = BitcoinExchange::splitString(key, '-');
-				if (!BitcoinExchange::validateKey() || BitcoinExchange::vec[i].size() != 10 || BitcoinExchange::vec[i+1].empty())
-				{
-						std::cout << "Error: bad input => "<<BitcoinExchange::vec[i]
-						<<" | "<<BitcoinExchange::vec[i + 1]<<std::endl;	
-						continue;
-				}
-				if(!BitcoinExchange::validateIntputValue(BitcoinExchange::vec[i+1], i+1))
-					continue;
+	//	if (str.size() > 10 || std::atol(str.c_str()) < 0)
+	//	{
+	//		std::cout << "Error: not a positive number."<< std::endl;
+	//		return (false);
+	//	}
+	//	return (true);
+	//}
+	//static void validateInputDate()
+	//{
+	//	std::string key;
+	//	for (size_t i = 0; i < BitcoinExchange::vec.size(); i++)
+	//	{
+	//		if (i % 2 == 0)
+	//		{
+	//			key = BitcoinExchange::vec[i];
+	//			BitcoinExchange::splited = BitcoinExchange::splitString(key, '-');
+	//			if (!BitcoinExchange::validateKey() || BitcoinExchange::vec[i].size() != 10 || BitcoinExchange::vec[i+1].empty())
+	//			{
+	//					std::cout << "Error: bad input => "<<BitcoinExchange::vec[i]
+	//					<<" | "<<BitcoinExchange::vec[i + 1]<<std::endl;	
+	//					continue;
+	//			}
+	//			if(!BitcoinExchange::validateIntputValue(BitcoinExchange::vec[i+1], i+1))
+	//				continue;
 
-				std::map<std::string, double>::iterator it;
-				it = BitcoinExchange::map.find(BitcoinExchange::vec[i]);
-				if (it != BitcoinExchange::map.end())
-				{
-					std::cout<<BitcoinExchange::vec[i]<<" => "<< BitcoinExchange::vec[i + 1]<<" = "
-					<<it->second * std::strtod(BitcoinExchange::vec[i + 1].c_str(), NULL) <<std::endl;
-				}
-				else
-				{
-					it = BitcoinExchange::map.upper_bound(BitcoinExchange::vec[i]);
-					it--;
-					std::cout<<BitcoinExchange::vec[i]<<" => "<< BitcoinExchange::vec[i + 1]<<" = "
-					<<it->second * std::strtod(BitcoinExchange::vec[i + 1].c_str(), NULL) <<std::endl;
-				}
-			}
+	//			std::map<std::string, double>::iterator it;
+	//			it = BitcoinExchange::map.find(BitcoinExchange::vec[i]);
+	//			if (it != BitcoinExchange::map.end())
+	//			{
+	//				std::cout<<BitcoinExchange::vec[i]<<" => "<< BitcoinExchange::vec[i + 1]<<" = "
+	//				<<it->second * std::strtod(BitcoinExchange::vec[i + 1].c_str(), NULL) <<std::endl;
+	//			}
+	//			else
+	//			{
+	//				it = BitcoinExchange::map.upper_bound(BitcoinExchange::vec[i]);
+	//				it--;
+	//				std::cout<<BitcoinExchange::vec[i]<<" => "<< BitcoinExchange::vec[i + 1]<<" = "
+	//				<<it->second * std::strtod(BitcoinExchange::vec[i + 1].c_str(), NULL) <<std::endl;
+	//			}
+	//		}
 		
 	
-		}
-	}
-	static void validateInputFile(std::string fname)
-	{
-		std::ifstream file(fname.c_str());
-    	if (!file.is_open())
-            throw std::runtime_error("Unable to open file2\n");
-		std::string line;
-		size_t pipe;
-		while (std::getline(file, line))
-		{
-			BitcoinExchange::removeSpaceTab(line);
-			if ((pipe = line.find('|')) != std::string::npos)
-			{
-				BitcoinExchange::vec.push_back(line.substr(0, pipe));
-				BitcoinExchange::vec.push_back(line.substr(pipe + 1, line.size()));
-			}
-			else
-			{
-				BitcoinExchange::vec.push_back(line.substr(0, 10));
-				BitcoinExchange::vec.push_back(line.substr(10, line.size()));
-			}
-		}
-		BitcoinExchange::validateInputDate();
-	}
+	//	}
+	//}
+	//static void validateInputFile(std::string fname)
+	//{
+	//	std::ifstream file(fname.c_str());
+    //	if (!file.is_open())
+    //        throw std::runtime_error("Unable to open file2\n");
+	//	std::string line;
+	//	size_t pipe;
+	//	while (std::getline(file, line))
+	//	{
+	//		BitcoinExchange::removeSpaceTab(line);
+	//		if ((pipe = line.find('|')) != std::string::npos)
+	//		{
+	//			BitcoinExchange::vec.push_back(line.substr(0, pipe));
+	//			BitcoinExchange::vec.push_back(line.substr(pipe + 1, line.size()));
+	//		}
+	//		else
+	//		{
+	//			BitcoinExchange::vec.push_back(line.substr(0, 10));
+	//			BitcoinExchange::vec.push_back(line.substr(10, line.size()));
+	//		}
+	//	}
+	//	//BitcoinExchange::validateInputDate();
+	//}
 };
 
 std::map<std::string, double> BitcoinExchange::map;
 std::vector<std::string> BitcoinExchange::vec;
 std::vector<std::string> BitcoinExchange::splited;
-
+std::string BitcoinExchange::key;
+std::string BitcoinExchange::value;
+std::string BitcoinExchange::result[3];
 #endif

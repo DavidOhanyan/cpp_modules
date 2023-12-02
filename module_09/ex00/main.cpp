@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:10:31 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/01 20:07:22 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/02 21:32:23 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int main()
 // Error: too large a number.
 	try
 	{
-		BitcoinExchange::validateDb("data.csv");
-		BitcoinExchange::validateInputFile("input.txt");
+		BitcoinExchange::openFile("example.txt");
+		//BitcoinExchange::validateInputFile("input.txt");
 	}
 	catch(const std::exception& ex)
 	{
