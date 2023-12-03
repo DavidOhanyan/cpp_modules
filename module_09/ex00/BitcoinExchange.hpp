@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:51:21 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/03 01:14:28 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/03 17:22:50 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,16 @@ public:
 	// 	}
 	// 	return (false);
 	// }
+	static std::string remove_is(std::string& str)
+	{
+		std::string result;
+    	for (size_t i = 0; i < str.length(); ++i) 
+		{
+        if (!std::isspace(static_cast<unsigned char>(str[i])))
+            result += str[i];
+        }
+		return (str);
+	}
 	static bool is_all_num(const std::string& str) 
 	{
     	bool dotFound = false;
@@ -230,6 +240,24 @@ public:
         //  std::cout << "Key: " << it->first << " Value: " << it->second << std::endl;
     	//  }
 	}
+	static std::string trimWhitespaces( std::string & str ) 
+	{
+    std::string::iterator start = str.begin();
+    std::string::iterator end = str.end();
+
+    while (start != end && std::isspace(*start))
+        start++;
+
+    if (start == end)
+        return (std::string());
+
+    end--;
+
+    while (std::isspace(*end))
+        end--;
+
+    return std::string(start, end + 1);
+	}
 	static void infile(std::string fname)
 	{
 		std::ifstream file(fname.c_str());
@@ -239,8 +267,11 @@ public:
     	if (!file.is_open())
             throw std::runtime_error("Unable to open file\n");
 		std::getline(file, line);
-		if (line != "date | value")
+		line = BitcoinExchange::remove_is(line);
+		if ( line != "aaa")
 			 throw std::runtime_error("Wrong in name\n");
+		//if (file.eof())
+		//	throw std::runtime_error("datarka\n");
 		// while (std::getline(file, line))
 		// {
 		// 	if (line.find('|') == std::string::npos)
