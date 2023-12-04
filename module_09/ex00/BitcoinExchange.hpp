@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:51:21 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/03 17:22:50 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:45:34 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@
 class BitcoinExchange
 {
 private:
-	static std::vector<std::string> vec;
-	static std::vector<std::string> splited;
+	static std::deque<std::string> dq;
 	static std::map<std::string, double> map;
 	static std::string key;
 	static std::string value;
@@ -228,57 +227,66 @@ public:
 	{
 		std::ifstream file(fname.c_str());
 		std::string line;
-    	if (!file.is_open())
+    	if (!file.is_open() && file.eof())
             throw std::runtime_error("Unable to open file\n");
-		std::getline(file, line);
-		if (line != "date,exchange_rate")
-			 throw std::runtime_error("Wrong db name\n");
-		if (!BitcoinExchange::openFile(file) || BitcoinExchange::map.empty())
-			throw std::runtime_error("txura\n");
+		//std::getline(file, line);
 		
 		// for (std::map<std::string, double>::iterator it = BitcoinExchange::map.begin(); it != map.end(); ++it) {
         //  std::cout << "Key: " << it->first << " Value: " << it->second << std::endl;
     	//  }
 	}
-	static std::string trimWhitespaces( std::string & str ) 
-	{
-    std::string::iterator start = str.begin();
-    std::string::iterator end = str.end();
+	//static std::string trimWhitespaces( std::string & str ) 
+	//{
+    //std::string::iterator start = str.begin();
+    //std::string::iterator end = str.end();
 
-    while (start != end && std::isspace(*start))
-        start++;
+    //while (start != end && std::isspace(*start))
+    //    start++;
 
-    if (start == end)
-        return (std::string());
+    //if (start == end)
+    //    return (std::string());
 
-    end--;
+    //end--;
 
-    while (std::isspace(*end))
-        end--;
+    //while (std::isspace(*end))
+    //    end--;
 
-    return std::string(start, end + 1);
-	}
-	static void infile(std::string fname)
-	{
-		std::ifstream file(fname.c_str());
-		std::string line;
-		std::map<std::string, double>::iterator it;
-		it = BitcoinExchange::map.begin();
-    	if (!file.is_open())
-            throw std::runtime_error("Unable to open file\n");
-		std::getline(file, line);
-		line = BitcoinExchange::remove_is(line);
-		if ( line != "aaa")
-			 throw std::runtime_error("Wrong in name\n");
-		//if (file.eof())
-		//	throw std::runtime_error("datarka\n");
-		// while (std::getline(file, line))
-		// {
-		// 	if (line.find('|') == std::string::npos)
-		// 		std::cout <<"Error: bad input => " << line <<std::endl;
-		// }
-	}
-	//static void validateInputFile(std::string fname)
+    //return std::string(start, end + 1);
+	//}
+	//static void removeSpacesAndTabs(std::string &inputString) 
+	//{
+    //	std::string result;
+    //	for (size_t i = 0; i < inputString.size(); ++i) {
+    //	    if (!std::isspace(inputString[i])) {
+    //	        result += inputString[i];
+    //	    }
+    //	}
+    //	inputString = result;
+	//}
+	//static void infile(std::string fname)
+	//{
+	//	std::ifstream file(fname.c_str());
+	//	std::string line;
+	//	std::map<std::string, double>::iterator it;
+	//	it = BitcoinExchange::map.begin();
+    //	if (!file.is_open())
+    //        throw std::runtime_error("Unable to open file\n");
+	//	std::getline(file, line);
+	//	line = BitcoinExchange::trimWhitespaces(line);
+	//	if ( line != "date | value")
+	//		 throw std::runtime_error("Wrong in name\n");
+	//	if (file.eof())
+	//		throw std::runtime_error("datarka\n");
+	//	 while (!file.eof())
+	//	 {
+	//		std::getline(file, line);
+	//	 	if (line.find('|') == std::string::npos)
+	//	 		std::cout <<"Error: bad input => " << line <<std::endl;
+	//		removeSpacesAndTabs(line);
+	//		std::cout<<line<<std::endl;
+	//	 }
+	//}
+	////static void validateInputFile(std::string fname)
 	//{
 	//	std::ifstream file(fname.c_str());
     //	if (!file.is_open())
@@ -304,8 +312,7 @@ public:
 };
 
 std::map<std::string, double> BitcoinExchange::map;
-std::vector<std::string> BitcoinExchange::vec;
-std::vector<std::string> BitcoinExchange::splited;
+std::deque<std::string> BitcoinExchange::dq;
 std::string BitcoinExchange::key;
 std::string BitcoinExchange::value;
 std::string BitcoinExchange::result[3];
