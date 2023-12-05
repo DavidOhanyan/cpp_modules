@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:51:21 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/04 19:45:34 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/12/05 20:13:07 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ public:
 	{
     	std::stringstream ss(input);
     	std::string token;
-		int i = 0;
+		//int i = 0;
     
     	while (std::getline(ss, token, delimiter)) 
-			result[i++] = token;
+			BitcoinExchange::dq.push_back(token);
 	}
 	static void removeSpaceTab(std::string& str)
 	{
@@ -123,14 +123,14 @@ public:
 	}
 	static bool validateKey()
 	{
-		if (!BitcoinExchange::is_all_num(BitcoinExchange::result[0]) || 
-			!BitcoinExchange::is_all_num(BitcoinExchange::result[1]) || 
-			!BitcoinExchange::is_all_num(BitcoinExchange::result[2]))
+		if (!BitcoinExchange::is_all_num(BitcoinExchange::dq[0]) || 
+			!BitcoinExchange::is_all_num(BitcoinExchange::dq[1]) || 
+			!BitcoinExchange::is_all_num(BitcoinExchange::dq[2]))
 			return (false);
 		int Manth_Day[] = {-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-		int Year = std::atoi(BitcoinExchange::result[0].c_str());
-		int Manth = std::atoi(BitcoinExchange::result[1].c_str());
-		int Day = std::atoi(BitcoinExchange::result[2].c_str());
+		int Year = std::atoi(BitcoinExchange::dq[0].c_str());
+		int Manth = std::atoi(BitcoinExchange::dq[1].c_str());
+		int Day = std::atoi(BitcoinExchange::dq[2].c_str());
 		
 		if (Year < 2009 || Year > 2024)
 			return (false);
@@ -208,29 +208,43 @@ public:
 		return (true);
 		//std::cout<<result->size();
 	}
-	static bool openFile(std::ifstream& file)
-	{
-		std::string line;
-		size_t comma;
-		while (std::getline(file, line))
-		{
-			if ((comma = line.find(',')) == std::string::npos)
-				return (false);
-			BitcoinExchange::key = line.substr(0, comma);
-			BitcoinExchange::value = line.substr(comma + 1, line.size());
-			if (!BitcoinExchange::validKeyValue(true))
-				return (false);
-		}
-		return (true);
-	}
+	//static bool openFile(std::ifstream& file)
+	//{
+	//	std::string line;
+	//	size_t comma;
+	//	while (std::getline(file, line))
+	//	{
+	//		if ((comma = line.find(',')) == std::string::npos)
+	//			return (false);
+	//		BitcoinExchange::key = line.substr(0, comma);
+	//		BitcoinExchange::value = line.substr(comma + 1, line.size());
+	//		if (!BitcoinExchange::validKeyValue(true))
+	//			return (false);
+	//	}
+	//	return (true);
+	//}
 	static void dbFile(std::string fname)
 	{
 		std::ifstream file(fname.c_str());
 		std::string line;
-    	if (!file.is_open() && file.eof())
+		size_t comma;
+    	if (!file.is_open())
             throw std::runtime_error("Unable to open file\n");
-		//std::getline(file, line);
 		
+		if (std::getline(file, line) && line != "date,exchange_rate")
+			  throw std::runtime_error("lol\n");
+		while (!file.eof())
+		{
+			std::getline(file, line);
+			if ((comma = line.find(',')) == std::string::npos)
+				throw std::runtime_error("storaket\n");
+			BitcoinExchange::key = line.substr(0, comma);
+			BitcoinExchange::value = line.substr(comma + 1, line.size());
+			BitcoinExchange::splitString(BitcoinExchange::key, '-');
+			//std::cout<<BitcoinExchange::dq[0]<<std::endl;
+			//std::cout<<"line = "<<line<<" size = "<<line.size()<<std::endl;
+		}
+				
 		// for (std::map<std::string, double>::iterator it = BitcoinExchange::map.begin(); it != map.end(); ++it) {
         //  std::cout << "Key: " << it->first << " Value: " << it->second << std::endl;
     	//  }
