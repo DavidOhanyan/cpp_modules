@@ -5,25 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 18:10:31 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/07 13:54:36 by dohanyan         ###   ########.fr       */
+/*   Created: 2023/12/07 16:02:59 by dohanyan          #+#    #+#             */
+/*   Updated: 2023/12/07 18:27:17 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
+#include <stack>
 
-int main(int argc, char **argv) 
+int main()
 {
-	try
-	{
-		if (argc != 2)
-			throw std::runtime_error(ERR_WRONG_ARG);
-		BitcoinExchange::dbFile("data.csv");
-		BitcoinExchange::infile(argv[1]);
-	}
-	catch(const std::exception& ex)
-	{
-		std::cout << ex.what() << std::endl;
-	}
-	return(0);
+	std::stack<double> s1;
+	s1.push(1);
+	s1.push(2);
+	s1.push(3);
+	s1.push(4);
+	std::cout << s1.top() << std::endl;
+	s1.pop();
+	std::cout << s1.top() << std::endl;
+ 	return (0);
 }
