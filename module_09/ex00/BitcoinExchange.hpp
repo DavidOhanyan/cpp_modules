@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:51:21 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/07 14:57:02 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/12/08 00:14:06 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 #include <string>
 #include <sstream>
 #include <fstream>
-#include <vector>
 #include <map>
 #include <utility>
 #include <cstdlib>
+#include <deque>
 
 #define ERR_WRONG_ARG "Argument list must contain only input file!"
 #define ERR_INVALID_INPUT_FILE "Input file is invalid please make sure that file exist or you have enough permissions"
