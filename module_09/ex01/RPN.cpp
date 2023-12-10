@@ -38,15 +38,15 @@ void RPN::pars(std::string line)
     for (size_t i = 0; i < rem.size(); i++)
     {
         if (std::isdigit(rem[i]) && std::isdigit(rem[i + 1]))
-            throw std::runtime_error("bad inpt tiv");
+            throw std::runtime_error(ERR_BAD_INPUT);
         if ((rem[i] == '+' || rem[i] == '-' || rem[i] == '*' ||  rem[i] == '/') && std::isdigit(rem[i + 1]))
-            throw std::runtime_error("bad inpt tiv2");
+            throw std::runtime_error(ERR_BAD_INPUT);
     }
     
     for (size_t i = 0; i < line.size(); i++)
     {
         if (!std::isdigit(line[i]) && line[i] != '-' && line[i] != '+' && line[i] != '*' && line[i] != '/')
-            throw std::runtime_error("bad inpt arg");
+            throw std::runtime_error(ERR_BAD_INPUT);
     }
     RPN::fill(line);
 }
@@ -62,10 +62,10 @@ void RPN::fill(std::string &line)
             if(!std::isdigit(line[i]) && RPN::stack.size() > 1)
                 RPN::calc(line[i]);
         else
-            throw std::runtime_error("vat nshan");
+            throw std::runtime_error(ERR_BAD_INPUT);
     }
     if (RPN::stack.size() > 1)
-        throw std::runtime_error("size");
+        throw std::runtime_error(ERR_BAD_INPUT);
     std::cout << "Result: " << RPN::stack.top() << std::endl;
 }
 

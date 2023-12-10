@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:03:50 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/10 01:18:59 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/10 15:53:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@
 #include <iostream>
 #include <string>
 #include <stack>
-#include <iostream>
 #include <sstream>
-#include <string>
-#include <cctype>
 #include <climits>
 #include <cstdlib>
-#include <sstream>
-#include <cmath>
+
+#define ERR_BAD_INPUT "Bad input!"
+#define ERR_BAD_ARG "Bad count argument!"
+
 
 class RPN
 {
