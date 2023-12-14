@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:23:53 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/13 19:23:30 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/12/14 21:53:45 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,10 +142,31 @@ int main(int argc,  char **argv)
 	{
 		if (argc == 1)
 			throw std::runtime_error("Bad argument!");
-		PmergeMe::validateInput(argv);
+		std::vector<std::pair<int, int> > pair;
+		PmergeMe::validateFill(argv);
+		PmergeMe::fillCorrectPair(pair);
+
+		for (size_t i = 0; i < pair.size(); i++)
+		{
+			std::cout<< pair[i].first << " "<<pair[i].second<<std::endl; 
+		}
+		std::cout<<"----------\n";
+		PmergeMe::mergeSort(pair);
+		for (size_t i = 0; i < pair.size(); i++)
+		{
+			std::cout<< pair[i].first << " "<<pair[i].second<<std::endl; 
+		}
+		//for (size_t i = 0; i < PmergeMe::vec.size(); i++)
+		//{
+		//	std::cout<<*PmergeMe::lst.begin()<<std::endl;
+		//	PmergeMe::lst.pop_front();
+		//}
+		
 	}
 	catch(const std::exception& e)
 	{
+		PmergeMe::vec.clear();
+		PmergeMe::lst.clear();
 		std::cerr << e.what() << std::endl;
 	}
 	 
