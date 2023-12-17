@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:44:40 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/16 21:10:19 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/12/17 19:07:52 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ public:
 		while (argv[++i])
 		{
 			line += argv[i];
-			//if (std::string(argv[i]).find_first_not_of(' ') == std::string::npos)
-			//	throw std::runtime_error("Error8");
+			if (std::string(argv[i]).find_first_not_of(' ') == std::string::npos)
+				throw std::runtime_error("Error8");
 			line += " ";
 		}
 		return (line);
@@ -118,7 +118,6 @@ public:
 		int l = 0;
 		int r = 0;
 		int i = 0;
-	
 	
 		while (l < leftSize && r < rightSize)
 		{
@@ -196,23 +195,23 @@ public:
 			PmergeMe::vec.push_back(pair[i].first);
 	}
 
-	static void takeOutSecond(std::vector<std::pair<int, int> > &pair, std::vector<int>& y_vec)
+	static void takeOutSecond(std::vector<std::pair<int, int> > &pair, std::vector<std::pair<int, int> >& y_vec)
 	{
+		int j = 3;
 		for (size_t i = 1; i < pair.size(); i++)
-			y_vec.push_back(pair[i].second);
+		{
+			y_vec.push_back(std::make_pair(pair[i].second, j));
+			j++;	
+		}
 	}
 
-
-	static void correct_y_vec(std::vector<std::pair<int, int> > &pair, std::vector<int>& y_vec)
+	static void correct_y_vec(std::vector<std::pair<int, int> > &pair, std::vector<std::pair<int, int> >& y_vec)
 	{
-		//int l=0;
-		size_t var = 2;
-		//(void)pair;
 		int i = 1;
 		size_t last;
-		std::vector<int>::iterator start = y_vec.begin();
-		std::vector<int>::iterator end = y_vec.end();
-				//std::cout<<"dist = "<<dist<<std::endl;
+		size_t var = 2;
+		std::vector<std::pair<int, int> >::iterator start = y_vec.begin();
+		std::vector<std::pair<int, int> >::iterator end = y_vec.end();
 		while (var <= pair.size() + 2)
 		{
 			size_t dist = std::distance(start, end);
@@ -230,6 +229,19 @@ public:
 			}
 			start += last;
 		}
+	}
+	static void BinaryInsert(std::vector<std::pair<int, int> >& y_vec)
+	{
+		int numIterations = 0;
+		for (size_t i = 0; i < y_vec.size(); i++)
+		{
+			std::vector<int>::iterator it = std::lower_bound(PmergeMe::vec.begin(),(PmergeMe::vec.begin() + y_vec[i].second + numIterations), y_vec[i].first);
+			PmergeMe::vec.insert(it, y_vec[i].first);
+			numIterations++;
+		}
+		std::vector<int>::iterator it = std::find(PmergeMe::vec.begin(), PmergeMe::vec.end(), 0);
+    	if (it != PmergeMe::vec.end())
+        	PmergeMe::vec.erase(it);
 	}
 	
 };
