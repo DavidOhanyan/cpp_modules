@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:44:40 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/14 22:47:53 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/12/16 21:10:19 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include <utility>
 #include <sstream>
 #include <list>
+#include <cmath>
+
 
 class PmergeMe
 {
@@ -40,7 +42,7 @@ public:
 		while (argv[++i])
 		{
 			line += argv[i];
-			//if (line.size() == 0)
+			//if (std::string(argv[i]).find_first_not_of(' ') == std::string::npos)
 			//	throw std::runtime_error("Error8");
 			line += " ";
 		}
@@ -122,26 +124,26 @@ public:
 		{
 			if (leftFirst[l].first < rightFirst[r].first)
 			{
-				arr[i].first = leftFirst[l].first;
+				arr[i] = leftFirst[l];
 				i++;
 				l++;
 			}
 			else
 			{
-				arr[i].first = rightFirst[r].first;
+				arr[i] = rightFirst[r];
 				i++;
 				r++;
 			}
 		}
 		while (l < leftSize)
 		{
-			arr[i].first = leftFirst[l].first;
+			arr[i] = leftFirst[l];
 			i++;
 			l++;
 		}
 		while (r < rightSize)
 		{
-			arr[i].first = rightFirst[r].first;
+			arr[i] = rightFirst[r];
 			i++;
 			r++;
 		}
@@ -172,7 +174,6 @@ public:
 		PmergeMe::merge(leftFirst, rightFirst, pair);
 	}
 
-
 	static void fillCorrectPair(std::vector<std::pair<int, int> > &pair)
 	{
 		if (PmergeMe::vec.size() % 2 != 0)
@@ -186,9 +187,53 @@ public:
 			i+=2;
 		}
 	}
+
+	static void takeOutFirst(std::vector<std::pair<int, int> > &pair)
+	{
+		PmergeMe::vec.clear();
+		PmergeMe::vec.push_back(pair[0].second);
+		for (size_t i = 0; i < pair.size(); i++)
+			PmergeMe::vec.push_back(pair[i].first);
+	}
+
+	static void takeOutSecond(std::vector<std::pair<int, int> > &pair, std::vector<int>& y_vec)
+	{
+		for (size_t i = 1; i < pair.size(); i++)
+			y_vec.push_back(pair[i].second);
+	}
+
+
+	static void correct_y_vec(std::vector<std::pair<int, int> > &pair, std::vector<int>& y_vec)
+	{
+		//int l=0;
+		size_t var = 2;
+		//(void)pair;
+		int i = 1;
+		size_t last;
+		std::vector<int>::iterator start = y_vec.begin();
+		std::vector<int>::iterator end = y_vec.end();
+				//std::cout<<"dist = "<<dist<<std::endl;
+		while (var <= pair.size() + 2)
+		{
+			size_t dist = std::distance(start, end);
+			i++;
+			last = var;
+			var = std::pow(2, i) - last;
+			if (last < dist)
+			{
+				std::reverse(start, start + last);
+			}
+			else
+			{
+				std::reverse(start, end);
+				break;
+			}
+			start += last;
+		}
+	}
+	
 };
 
 std::vector<int> PmergeMe::vec;
 std::list<int> PmergeMe::lst;
-
 #endif

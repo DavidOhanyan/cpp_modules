@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:23:53 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/14 21:53:45 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/12/16 20:17:16 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,29 +120,51 @@ bool binarySearch(std::vector<int> &arr, int val)
 	return (1);
 }
 
+
+
 int main(int argc,  char **argv)
 {
-	//int arr[] = {1, -3, 33, 11, 56, 78};
+	(void)argc;
+	//(void)argv;
+	//int arr[] = {4, 1, 8, 9, 18, 30};
 	//std::vector<int> vec(arr, arr + 6);
-	////mergeSort(vec);
-    //inertionSort(vec);
-	//binarySearch(vec, 11);
-	////for (size_t i = 0; i < vec.size(); i++)
-	////{
-	////	std::cout<<vec[i]<<" ";
-	////}
-	//std::vector<std::pair<int, int> > pairs;
-    
-    //pairs.push_back(std::make_pair(1, 4));
-    //pairs.push_back(std::make_pair(3, 4));
-    //pairs.push_back(std::make_pair(5, 6));
-
-	//std::cout << pairs[0].first<<std::endl;
+	//for (size_t i = 0; i < vec.size(); i++)
+	//{
+	//	std::cout<<vec[i] << " ";
+	//}
+	//std::cout << std::endl;
+	//std::cout<<"-------------\n";
+	////size_t dist = std::distance(vec.begin() + 2, vec.end());
+	////if (dist < 6)
+	//	std::reverse(vec.begin() + 2, vec.end());
+	////else
+	////	std::reverse(vec.begin() + 2, vec.begin() + 2 + 6);
+	//for (size_t i = 0; i < vec.size(); i++)
+	//{
+	//	std::cout<<vec[i] << " ";
+	//}
+	//	std::cout<<"tex ka\n";
+	//else
+	//	std::cout<<"tex chka\n";
+	//std::cout<<dist<<std::endl;
+	//std::vector<int>::iterator start = vec.begin() + 2;
+	//if (std::distance(start, vec.end()) >= 6)
+	//	std::cout<<"tex chka\n";
+	//else
+	//	std::cout<<"tex ka\n";
+	//for (size_t i = 0; i < vec.size(); i++)
+	//{
+	//	std::cout<<vec[i] << " ";
+	//}
+	
+	
 	try
 	{
 		if (argc == 1)
 			throw std::runtime_error("Bad argument!");
+		std::vector<int> y_vec;
 		std::vector<std::pair<int, int> > pair;
+		
 		PmergeMe::validateFill(argv);
 		PmergeMe::fillCorrectPair(pair);
 
@@ -155,6 +177,30 @@ int main(int argc,  char **argv)
 		for (size_t i = 0; i < pair.size(); i++)
 		{
 			std::cout<< pair[i].first << " "<<pair[i].second<<std::endl; 
+		}
+		PmergeMe::takeOutFirst(pair);
+		
+		std::cout<<"----------\n";
+		for (size_t i = 0; i < PmergeMe::vec.size(); i++)
+		{
+				std::cout<<PmergeMe::vec[i]<<" ";
+		}
+		std::cout<<std::endl;
+		std::cout<<"----------\n";
+		
+		PmergeMe::takeOutSecond(pair, y_vec);
+		for (size_t i = 0; i < y_vec.size(); i++)
+		{
+			std::cout<<y_vec[i]<<" ";
+		}
+		std::cout<<std::endl;
+		
+		std::cout<<"----------\n";
+		PmergeMe::correct_y_vec(pair, y_vec);
+		std::cout<<std::endl;
+		for (size_t i = 0; i < y_vec.size(); i++)
+		{
+			std::cout<<y_vec[i]<<" ";
 		}
 		//for (size_t i = 0; i < PmergeMe::vec.size(); i++)
 		//{
