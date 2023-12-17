@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:44:40 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/17 19:07:52 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/12/17 23:41:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 #include <sstream>
 #include <list>
 #include <cmath>
+#include <algorithm>
+#include <ctime>
+#include <sys/time.h>
 
 
 class PmergeMe
@@ -242,6 +245,44 @@ public:
 		std::vector<int>::iterator it = std::find(PmergeMe::vec.begin(), PmergeMe::vec.end(), 0);
     	if (it != PmergeMe::vec.end())
         	PmergeMe::vec.erase(it);
+	}
+	static void sortContainer()
+	{
+		std::vector<std::pair<int, int> > y_vec;
+		std::vector<std::pair<int, int> > pair;
+		
+		PmergeMe::fillCorrectPair(pair);
+		PmergeMe::mergeSort(pair);
+		PmergeMe::takeOutFirst(pair);
+		PmergeMe::takeOutSecond(pair, y_vec);
+		PmergeMe::correct_y_vec(pair, y_vec);
+		PmergeMe::BinaryInsert(y_vec);
+		
+	}
+	static void print_container(const std::string & addnText ) 
+	{
+		std::cout << addnText;
+
+		for (size_t i = 0; i < PmergeMe::vec.size(); i++)
+			std::cout << PmergeMe::vec[i] << " ";
+		
+		std::cout << std::endl;
+	}
+	static void checkTime(std::vector<std::pair<int, int> >& y_vec) 
+	{
+		struct timeval start_time, end_time;
+
+		gettimeofday(&start_time, NULL);
+		PmergeMe::sortContainer();
+		gettimeofday(&end_time, NULL);
+
+		long duration = (end_time.tv_sec - start_time.tv_sec) * 1000000L + (end_time.tv_usec - start_time.tv_usec);
+
+		// if (PmergeMe::printMode)
+			PmergeMe::print_container("After: ");
+
+		std::cout << "Time to process a range of " << y_vec.size() << " elements with " 
+			<< "vector" << ": " << duration << "us" << std::endl;
 	}
 	
 };

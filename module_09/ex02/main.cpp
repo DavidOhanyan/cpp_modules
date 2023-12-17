@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:23:53 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/17 19:06:22 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/12/17 23:40:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,13 @@ int main(int argc,  char **argv)
 	{
 		if (argc == 1)
 			throw std::runtime_error("Bad argument!");
-		std::vector<std::pair<int, int> > y_vec;
-		std::vector<std::pair<int, int> > pair;
-		
 		PmergeMe::validateFill(argv);
-		PmergeMe::fillCorrectPair(pair);
 
-		PmergeMe::mergeSort(pair);
-		PmergeMe::takeOutFirst(pair);
-		PmergeMe::takeOutSecond(pair, y_vec);
-		PmergeMe::correct_y_vec(pair, y_vec);
-		PmergeMe::BinaryInsert(y_vec);
 		for (size_t i = 0; i < PmergeMe::vec.size(); i++)
 		{
 				std::cout<<PmergeMe::vec[i] << " ";
 		}
+		std::cout<<std::endl;
 	}
 	catch(const std::exception& e)
 	{
