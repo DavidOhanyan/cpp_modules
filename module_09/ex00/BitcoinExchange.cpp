@@ -6,7 +6,7 @@
 /*   By: dohanyan <dohanyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:49:51 by dohanyan          #+#    #+#             */
-/*   Updated: 2023/12/07 14:57:58 by dohanyan         ###   ########.fr       */
+/*   Updated: 2023/12/19 14:48:40 by dohanyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool BitcoinExchange::is_all_num(const std::string& str)
     	char c = str[i];
     	if (!isdigit(c)) 
 		{
-        	if (c == '.' && !dotFound)
+        	if (c == '.' && !dotFound && str[i + 1] != '\0')
             	dotFound = true;
         	else 
             	return false;
@@ -173,18 +173,27 @@ void BitcoinExchange::infile(std::string fname)
 		if (!BitcoinExchange::validateKey())
 		{
 			std::cout << ERR_BAD_INPUT << rem << std::endl;
+			BitcoinExchange::dq.clear();
 			continue;
 		}
 		i = BitcoinExchange::validateInValue();
-		BitcoinExchange::dq.clear();
 		switch (i)
 		{
 			case 1: std::cout << ERR_BAD_INPUT << rem << std::endl;
+			{
+				BitcoinExchange::dq.clear();
 				break;
+			}
 			case 2: std::cout << ERR_LARGE_NUM << std::endl;
+			{
+				BitcoinExchange::dq.clear();
 				break;
-			case 3: std::cout << ERR_OUT_OF_BOUNDS_DATE << std::endl;
+			}
+			case 3: std::cout << ERR_NEG_NUM << std::endl;
+			{
+				BitcoinExchange::dq.clear();
 				break;
+			}
 			default:
 			{
 				std::map<std::string, double>::iterator target;
@@ -196,10 +205,12 @@ void BitcoinExchange::infile(std::string fname)
 				    target = --bound;
  				const double result = std::strtod(BitcoinExchange::value.c_str(), NULL) * target->second;
 				std::cout << BitcoinExchange::key << " => " << BitcoinExchange::value << " = " << result << std::endl;
+				BitcoinExchange::dq.clear();
 			}
 		}
 	 }
 	BitcoinExchange::map.clear();
+	BitcoinExchange::dq.clear();
 }
 
 std::map<std::string, double> BitcoinExchange::map;
